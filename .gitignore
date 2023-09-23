@@ -1,0 +1,16 @@
+venv
+*.env
+*public
+*.pyc
+*/lib
+lib
+build
+dist
+gw_mail.*
+src.*
+.vscode
+log
+dump.rd
+dump.rdb
+private_key.pem
+public_key.pem

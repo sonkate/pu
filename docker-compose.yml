@@ -1,0 +1,21 @@
+version: "3"
+services:
+
+  gb_account_api:
+    image: gb_account_api
+    container_name: gb_account_api
+    build: 
+      context: .
+      dockerfile: Dockerfile
+
+    restart: always
+    volumes:
+      - ./log:/var/log/gb_account_api
+    ports:
+      - ${PORT}:5005
+    command:
+      - /bin/sh
+      - -c
+      - |
+        gunicorn --bind 0.0.0.0:5005 --workers=1 --worker-class=uvicorn.workers.UvicornWorker main:app --log-level=debug -c conf/gunicorn.py --timeout 0
+
